@@ -1,19 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, MessageCircle } from "lucide-react";
+import { Menu, X, User } from "lucide-react";
 import { cn } from "@/lib/utils";
+import logo from "@/assets/Logo.png";
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -23,120 +15,137 @@ const Header = () => {
     }
   };
 
-  const handleWhatsApp = () => {
-    window.open("https://wa.me/5517996570202", "_blank");
+  const goToClientArea = () => {
+    window.open("https://seusite.com/area-do-cliente", "_blank");
   };
 
   return (
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled
-          ? "bg-background/95 backdrop-blur-md shadow-md"
-          : "bg-transparent"
+        "bg-[#f6efe8] text-[#0c2947] shadow-md"
       )}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
+        {/* GRID DE 3 COLUNAS */}
+        <div className="grid grid-cols-3 items-center h-20">
+          
+          {/* LOGO */}
           <div className="flex items-center">
             <button
               onClick={() => scrollToSection("inicio")}
-              className="text-2xl font-bold text-primary hover:text-primary-light transition-colors"
+              className="flex items-center gap-2"
             >
-              ABRA
+              <img
+                src={logo}
+                alt="Logo"
+                className="h-16 w-auto object-contain"
+              />
             </button>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          {/* MENU DESKTOP */}
+          <nav className="hidden md:flex items-center gap-8 justify-center">
             <button
               onClick={() => scrollToSection("inicio")}
-              className="text-foreground hover:text-primary transition-colors font-medium"
+              className="text-[#0c2947] hover:text-[#ceb14d] transition-colors font-semibold"
             >
               Início
             </button>
             <button
               onClick={() => scrollToSection("quem-somos")}
-              className="text-foreground hover:text-primary transition-colors font-medium"
+              className="text-[#0c2947] hover:text-[#ceb14d] transition-colors font-semibold"
             >
               Quem Somos
             </button>
             <button
               onClick={() => scrollToSection("servicos")}
-              className="text-foreground hover:text-primary transition-colors font-medium"
+              className="text-[#0c2947] hover:text-[#ceb14d] transition-colors font-semibold"
             >
               Serviços
             </button>
             <button
               onClick={() => scrollToSection("faq")}
-              className="text-foreground hover:text-primary transition-colors font-medium"
+              className="text-[#0c2947] hover:text-[#ceb14d] transition-colors font-semibold"
             >
               FAQ
             </button>
             <button
               onClick={() => scrollToSection("contato")}
-              className="text-foreground hover:text-primary transition-colors font-medium"
+              className="text-[#0c2947] hover:text-[#ceb14d] transition-colors font-semibold"
             >
               Contato
             </button>
           </nav>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <Button variant="whatsapp" size="lg" onClick={handleWhatsApp}>
-              <MessageCircle className="w-5 h-5" />
-              Fale no WhatsApp
-            </Button>
+          {/* BOTÃO ÁREA DO CLIENTE */}
+          <div className="hidden md:flex justify-end">
+            <button
+              onClick={goToClientArea}
+              className="px-6 py-3 rounded-xl text-[#0c2947] font-bold bg-[#ceb14d] hover:bg-[#b99c3d] transition-all flex items-center gap-2 shadow-md"
+            >
+              <User className="w-5 h-5" />
+              Área do Cliente
+            </button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* MENU MOBILE ICON */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-primary"
+            className="md:hidden p-2 text-[#0c2947] justify-self-end"
           >
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* MENU MOBILE */}
         {isMobileMenuOpen && (
           <div className="md:hidden py-6 border-t border-border animate-fade-in">
             <nav className="flex flex-col gap-4">
+
               <button
                 onClick={() => scrollToSection("inicio")}
-                className="text-foreground hover:text-primary transition-colors font-medium text-left py-2"
+                className="text-[#0c2947] hover:text-[#ceb14d] transition-colors font-semibold text-left py-2"
               >
                 Início
               </button>
+
               <button
                 onClick={() => scrollToSection("quem-somos")}
-                className="text-foreground hover:text-primary transition-colors font-medium text-left py-2"
+                className="text-[#0c2947] hover:text-[#ceb14d] transition-colors font-semibold text-left py-2"
               >
                 Quem Somos
               </button>
+
               <button
                 onClick={() => scrollToSection("servicos")}
-                className="text-foreground hover:text-primary transition-colors font-medium text-left py-2"
+                className="text-[#0c2947] hover:text-[#ceb14d] transition-colors font-semibold text-left py-2"
               >
                 Serviços
               </button>
+
               <button
                 onClick={() => scrollToSection("faq")}
-                className="text-foreground hover:text-primary transition-colors font-medium text-left py-2"
+                className="text-[#0c2947] hover:text-[#ceb14d] transition-colors font-semibold text-left py-2"
               >
                 FAQ
               </button>
+
               <button
                 onClick={() => scrollToSection("contato")}
-                className="text-foreground hover:text-primary transition-colors font-medium text-left py-2"
+                className="text-[#0c2947] hover:text-[#ceb14d] transition-colors font-semibold text-left py-2"
               >
                 Contato
               </button>
-              <Button variant="whatsapp" size="lg" onClick={handleWhatsApp} className="mt-4">
-                <MessageCircle className="w-5 h-5" />
-                Fale no WhatsApp
-              </Button>
+
+              {/* BOTÃO MOBILE ÁREA DO CLIENTE */}
+              <button
+                onClick={goToClientArea}
+                className="mt-4 px-6 py-3 rounded-xl text-[#0c2947] font-bold bg-[#ceb14d] hover:bg-[#b99c3d] transition-all flex items-center justify-center gap-2 shadow-md"
+              >
+                <User className="w-5 h-5" />
+                Área do Cliente
+              </button>
             </nav>
           </div>
         )}

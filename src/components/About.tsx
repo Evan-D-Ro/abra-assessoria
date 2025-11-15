@@ -21,49 +21,63 @@ const pillars = [
 
 const About = () => {
   return (
-    <section id="quem-somos" className="py-20 bg-background">
+    <section id="quem-somos" className="py-20 bg-[#f6efe8]">
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
+
+          {/* Título */}
           <div className="text-center mb-12 animate-fade-in-up">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0c2947] mb-4">
               Quem Somos
             </h2>
-            <div className="w-20 h-1 bg-primary mx-auto rounded mb-8"></div>
+            <div className="w-24 h-1 bg-[#ceb14d] mx-auto rounded mb-8"></div>
           </div>
 
+          {/* Texto */}
           <div className="prose prose-lg max-w-none mb-16 animate-fade-in-up">
-            <p className="text-muted-foreground text-center leading-relaxed mb-6">
-              A <span className="font-semibold text-foreground">ABRA – Assessoria em Cobrança Ltda.</span> é uma empresa 
-              especializada em recuperação de crédito e gestão de inadimplência. Nossa missão é recuperar valores de forma 
-              eficiente, preservando o relacionamento entre credor e cliente.
+            <p className="text-[#0c2947]/80 text-center leading-relaxed mb-6">
+              A <span className="font-semibold text-[#0c2947]">ABRA – Assessoria em Cobrança Ltda.</span> é uma empresa 
+              especializada em recuperação de crédito e gestão de inadimplência.
+              Nossa missão é recuperar valores de forma eficiente, preservando o
+              relacionamento entre credor e cliente.
             </p>
             
-            <p className="text-muted-foreground text-center leading-relaxed">
-              Com atuação ética, profissional e fundamentada na legislação vigente, utilizamos técnicas modernas de cobrança 
-              que unem inteligência financeira, comunicação estratégica e negociação especializada.
+            <p className="text-[#0c2947]/80 text-center leading-relaxed">
+              Atuamos com ética, transparência e técnicas modernas, unindo
+              inteligência financeira, comunicação estratégica e negociação
+              profissional.
             </p>
           </div>
 
-          {/* Pillars */}
+          {/* Pilares */}
           <div className="grid md:grid-cols-3 gap-8">
             {pillars.map((pillar, index) => (
               <Card
                 key={index}
-                className="p-8 text-center hover:shadow-xl transition-all duration-300 hover:scale-105 bg-card border-border animate-fade-in-up"
+                className="
+                  p-10 text-center rounded-xl bg-white shadow-md 
+                  border border-[#ceb14d]/30 hover:shadow-2xl 
+                  hover:border-[#ceb14d]/60 transition-all duration-300 
+                  hover:scale-105 animate-fade-in-up
+                "
                 style={{ animationDelay: `${index * 150}ms` }}
               >
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
-                  <pillar.icon className="w-8 h-8 text-primary" />
+                <div className="w-20 h-20 mx-auto mb-5 rounded-full 
+                                bg-[#ceb14d]/20 flex items-center justify-center">
+                  <pillar.icon className="w-10 h-10 text-[#ceb14d]" />
                 </div>
-                <h3 className="text-xl font-bold text-foreground mb-3">
+
+                <h3 className="text-xl font-bold text-[#0c2947] mb-3">
                   {pillar.title}
                 </h3>
-                <p className="text-muted-foreground">
+
+                <p className="text-[#0c2947]/70">
                   {pillar.description}
                 </p>
               </Card>
             ))}
           </div>
+
         </div>
       </div>
     </section>
