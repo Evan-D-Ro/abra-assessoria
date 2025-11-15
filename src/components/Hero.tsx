@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Shield, Award } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
-import heroImage from "@/assets/hero-business.jpg";
+import heroImage from "@/assets/1.jpg";
 
 const Hero = () => {
   const handleWhatsApp = () => {
@@ -80,7 +80,7 @@ const Hero = () => {
               </span>
             </div>
 
-            
+
           </div>
 
           {/* CTA Button */}

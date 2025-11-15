@@ -33,7 +33,7 @@ const Benefits = () => {
   return (
     <section className="py-20 bg-[#0c2947]">
       <div className="container mx-auto px-4">
-        
+
         {/* Título */}
         <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-3xl md:text-4xl font-bold text-[#f6efe8] mb-4">
@@ -55,8 +55,8 @@ const Benefits = () => {
               "
               style={{ animationDelay: `${index * 120}ms` }}
             >
-              <div className="flex items-start gap-4">
-                
+              <div className="flex items-center gap-4">
+
                 {/* Ícone */}
                 <div className="flex-shrink-0 w-14 h-14 rounded-lg 
                                 bg-[#ceb14d]/15 flex items-center justify-center shadow-inner">

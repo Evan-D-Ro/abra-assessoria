@@ -1,6 +1,6 @@
 import { Scale, Handshake, TrendingDown, MapPin, FileText, ShieldCheck } from "lucide-react";
 import { Card } from "@/components/ui/card";
-
+import background from "@/assets/5.png";
 const services = [
   {
     icon: Scale,
@@ -39,12 +39,12 @@ const services = [
     features: [],
   },
   {
-  icon: ShieldCheck,
-  title: "Proteção Jurídica",
-  description: "Garantia de conformidade legal em todas as etapas da cobrança.",
-  features: [],
+    icon: ShieldCheck,
+    title: "Proteção Jurídica",
+    description: "Garantia de conformidade legal em todas as etapas da cobrança.",
+    features: [],
   },
-  
+
 ];
 
 const Services = () => {
@@ -56,6 +56,15 @@ const Services = () => {
         bg-[#f6efe8] from-secondary/10 to-secondary/30
       "
     >
+      {/* IMAGEM DE FUNDO */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url(${background})`,
+          opacity: 0.25, // controla a força da imagem
+        }}
+      ></div>
+
       {/* Bolhas suaves como no About */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute w-64 h-64 bg-primary/10 rounded-full blur-3xl top-0 left-0"></div>

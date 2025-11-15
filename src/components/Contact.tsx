@@ -33,7 +33,7 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrors({});
-    
+
     try {
       contactSchema.parse(formData);
       setIsSubmitting(true);
@@ -79,7 +79,7 @@ const Contact = () => {
       {/* Decorative elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#ceb14d]/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#0c2947]/5 rounded-full blur-3xl"></div>
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
@@ -89,7 +89,7 @@ const Contact = () => {
             </h2>
             <div className="w-24 h-1.5 bg-gradient-to-r from-[#ceb14d] to-[#ceb14d]/50 mx-auto rounded-full mb-6"></div>
             <p className="text-lg text-[#0c2947]/70 max-w-2xl mx-auto">
-              Fale Conosco – Preencha o formulário abaixo para enviar sua mensagem
+              Preencha o formulário abaixo para enviar sua mensagem
               ou entre em contato. Será um prazer atendê-lo(a)!
             </p>
           </div>
@@ -173,7 +173,7 @@ const Contact = () => {
                 </div>
                 <h3 className="text-2xl font-bold text-[#0c2947]">Envie sua Mensagem</h3>
               </div>
-              
+
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
                   <Input
@@ -181,13 +181,12 @@ const Contact = () => {
                     placeholder="Nome *"
                     value={formData.name}
                     onChange={handleChange}
-                    className={`bg-[#f6efe8] border-[#ceb14d]/30 focus:border-[#ceb14d] text-[#0c2947] placeholder:text-[#0c2947]/50 h-12 ${
-                      errors.name ? "border-red-500" : ""
-                    }`}
+                    className={`bg-[#f6efe8] border-[#ceb14d]/30 focus:border-[#ceb14d] text-[#0c2947] placeholder:text-[#0c2947]/50 h-12 ${errors.name ? "border-red-500" : ""
+                      }`}
                   />
                   {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
                 </div>
-                
+
                 <div>
                   <Input
                     name="email"
@@ -195,13 +194,12 @@ const Contact = () => {
                     placeholder="E-mail *"
                     value={formData.email}
                     onChange={handleChange}
-                    className={`bg-[#f6efe8] border-[#ceb14d]/30 focus:border-[#ceb14d] text-[#0c2947] placeholder:text-[#0c2947]/50 h-12 ${
-                      errors.email ? "border-red-500" : ""
-                    }`}
+                    className={`bg-[#f6efe8] border-[#ceb14d]/30 focus:border-[#ceb14d] text-[#0c2947] placeholder:text-[#0c2947]/50 h-12 ${errors.email ? "border-red-500" : ""
+                      }`}
                   />
                   {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
                 </div>
-                
+
                 <div>
                   <Input
                     name="subject"
@@ -211,7 +209,7 @@ const Contact = () => {
                     className="bg-[#f6efe8] border-[#ceb14d]/30 focus:border-[#ceb14d] text-[#0c2947] placeholder:text-[#0c2947]/50 h-12"
                   />
                 </div>
-                
+
                 <div>
                   <Textarea
                     name="message"
@@ -219,13 +217,12 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     rows={6}
-                    className={`bg-[#f6efe8] border-[#ceb14d]/30 focus:border-[#ceb14d] text-[#0c2947] placeholder:text-[#0c2947]/50 resize-none ${
-                      errors.message ? "border-red-500" : ""
-                    }`}
+                    className={`bg-[#f6efe8] border-[#ceb14d]/30 focus:border-[#ceb14d] text-[#0c2947] placeholder:text-[#0c2947]/50 resize-none ${errors.message ? "border-red-500" : ""
+                      }`}
                   />
                   {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
                 </div>
-                
+
                 <Button
                   type="submit"
                   size="lg"
