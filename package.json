@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "Homepage": "https://evan-d-ro.github.io/abra-assesoria/",
+  "Homepage": "https://evan-d-ro.github.io/abra-assessoria/",
 
   "scripts": {
     "dev": "vite",
