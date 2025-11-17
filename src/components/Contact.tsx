@@ -68,7 +68,7 @@ const Contact = () => {
       ...formData,
       [name]: value,
     });
-    // Clear error when user starts typing
+
     if (errors[name]) {
       setErrors({ ...errors, [name]: "" });
     }
@@ -76,9 +76,6 @@ const Contact = () => {
 
   return (
     <section id="contato" className="py-24 bg-[#f6efe8] relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#ceb14d]/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#0c2947]/5 rounded-full blur-3xl"></div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
@@ -94,11 +91,12 @@ const Contact = () => {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-5 gap-8">
-            {/* Left Column - Contact Cards */}
-            <div className="lg:col-span-2 space-y-6">
+          <div className="grid lg:grid-cols-5 gap-8 items-stretch">
+            {/* Left Column - MATCH HEIGHT */}
+            <div className="lg:col-span-2 flex flex-col justify-between space-y-6 mt-6 lg:mt-0">
+
               {/* Quick Contact Card */}
-              <Card className="p-8 bg-white border-2 border-[#ceb14d]/20 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <Card className="p-8 bg-white border-2 border-[#ceb14d]/20 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-12 h-12 rounded-full bg-[#0c2947] flex items-center justify-center">
                     <MessageCircle className="w-6 h-6 text-[#ceb14d]" />
@@ -112,7 +110,7 @@ const Contact = () => {
                     onClick={handleWhatsApp}
                   >
                     <FaWhatsapp className="w-5 h-5 mr-2 text-[#ceb14d] group-hover:scale-110 transition-transform" />
-                    WhatsApp: (17) 99657-0202
+                    <span className="text-sm md:text-base">WhatsApp: (17) 99657-0202</span>
                   </Button>
                   <Button
                     size="lg"
@@ -131,26 +129,26 @@ const Contact = () => {
               </Card>
 
               {/* Info Card */}
-              <Card className="p-8 bg-gradient-to-br from-[#0c2947] to-[#0c2947]/90 border-0 shadow-lg hover:shadow-2xl transition-all duration-300">
+              <Card className="p-8 bg-gradient-to-br from-[#0c2947] to-[#0c2947]/90 border-0 shadow-lg hover:shadow-2xl transition-all duration-300 h-full">
                 <h3 className="text-2xl font-bold mb-6 text-white">Informações</h3>
                 <div className="space-y-6">
                   <div className="flex items-start gap-4 group">
-                    <div className="w-10 h-10 rounded-lg bg-[#ceb14d]/20 flex items-center justify-center flex-shrink-0 group-hover:bg-[#ceb14d]/30 transition-colors">
+                    <div className="w-10 h-10 rounded-lg bg-[#ceb14d]/20 flex items-center justify-center group-hover:bg-[#ceb14d]/30 transition-colors flex-shrink-0">
                       <MapPin className="w-5 h-5 text-[#ceb14d]" />
                     </div>
-                    <div>
+
+                    <div className="flex-1">
                       <p className="font-semibold text-white mb-1">Endereço</p>
                       <p className="text-white/80 text-sm leading-relaxed">
-                        Rua Voluntários de São Paulo, nº 3169 – Sala 13
-                        <br />
-                        Centro, CEP: 15015-910
-                        <br />
+                        Rua Voluntários de São Paulo, nº 3169 – Sala 13 <br />
+                        Centro, CEP: 15015-910 <br />
                         São José do Rio Preto – SP
                       </p>
                     </div>
                   </div>
+
                   <div className="flex items-start gap-4 group">
-                    <div className="w-10 h-10 rounded-lg bg-[#ceb14d]/20 flex items-center justify-center flex-shrink-0 group-hover:bg-[#ceb14d]/30 transition-colors">
+                    <div className="w-10 h-10 rounded-lg bg-[#ceb14d]/20 flex items-center justify-center group-hover:bg-[#ceb14d]/30 transition-colors">
                       <Phone className="w-5 h-5 text-[#ceb14d]" />
                     </div>
                     <div>
@@ -162,9 +160,9 @@ const Contact = () => {
               </Card>
             </div>
 
-            {/* Right Column - Form */}
+            {/* Right Column - FORM */}
             <Card
-              className="lg:col-span-3 p-8 md:p-10 bg-white border-2 border-[#ceb14d]/20 shadow-xl"
+              className="lg:col-span-3 p-8 md:p-10 bg-white border-2 border-[#ceb14d]/20 shadow-xl h-full flex flex-col"
               id="contact-form"
             >
               <div className="flex items-center gap-3 mb-8">

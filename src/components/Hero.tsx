@@ -1,7 +1,10 @@
-import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
 import { ArrowRight, Shield, Award } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import heroImage from "@/assets/1.jpg";
+
+// IMPORTA O TYPEWRITER
+import TypewriterText from "@/components/TypewriterText";
 
 const Hero = () => {
   const handleWhatsApp = () => {
@@ -28,7 +31,6 @@ const Hero = () => {
           className="w-full h-full object-cover opacity-70"
         />
 
-        {/* Overlay puxando para o #0c2947 */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#0c2947]/95 via-[#0c2947]/80 to-[#0c2947]/30"></div>
       </div>
 
@@ -37,9 +39,19 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in-up leading-tight text-[#f6efe8]">
             Recuperamos o que é seu.{" "}
-            <span className="text-[#ceb14d]">
-              Com respeito, estratégia e resultado.
-            </span>
+            <div className="mt-4">
+              <span className="text-[#f6efe8]">
+                Com{" "}
+                <span className="text-[#ceb14d] font-bold">
+                  {/* AQUI ENTRA O TYPEWRITER */}
+                  <TypewriterText
+                    texts={["respeito", "estratégia", "resultado"]}
+                    speed={120}
+                    pause={900}
+                  />
+                </span>
+              </span>
+            </div>
           </h1>
 
           <p className="text-lg md:text-xl mb-10 max-w-3xl mx-auto animate-fade-in-up leading-relaxed text-[#f6efe8]/90">
@@ -56,31 +68,20 @@ const Hero = () => {
             className="mt-12 mb-12 flex flex-wrap items-center justify-center gap-6 animate-fade-up"
             style={{ animationDelay: "0.8s" }}
           >
-            {/* Recuperação Financeira */}
             <div className="flex items-center gap-2 px-4 py-2 bg-[#0c2947]/50 backdrop-blur-sm rounded-lg border border-[#ceb14d]/40 shadow-sm">
               <ArrowRight className="w-5 h-5 text-[#ceb14d]" />
-              <span className="text-sm text-[#f6efe8]">
-                Recuperação Financeira
-              </span>
+              <span className="text-sm text-[#f6efe8]">Recuperação Financeira</span>
             </div>
 
-            {/* Profissionalismo */}
             <div className="flex items-center gap-2 px-4 py-2 bg-[#0c2947]/50 backdrop-blur-sm rounded-lg border border-[#ceb14d]/40 shadow-sm">
               <Award className="w-5 h-5 text-[#ceb14d]" />
-              <span className="text-sm text-[#f6efe8]">
-                Profissionalismo
-              </span>
+              <span className="text-sm text-[#f6efe8]">Profissionalismo</span>
             </div>
 
-            {/* Cobrança Ética e Legal */}
             <div className="flex items-center gap-2 px-4 py-2 bg-[#0c2947]/50 backdrop-blur-sm rounded-lg border border-[#ceb14d]/40 shadow-sm">
               <Shield className="w-5 h-5 text-[#ceb14d]" />
-              <span className="text-sm text-[#f6efe8]">
-                Cobrança Ética e Legal
-              </span>
+              <span className="text-sm text-[#f6efe8]">Cobrança Ética e Legal</span>
             </div>
-
-
           </div>
 
           {/* CTA Button */}
@@ -101,7 +102,7 @@ const Hero = () => {
       </div>
 
       {/* Decorative bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#0c2947] to-transparent z-10"></div>
+      <div className="hidden md:block absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#0c2947] to-transparent z-10"></div>
     </section>
   );
 };

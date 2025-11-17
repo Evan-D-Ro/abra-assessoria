@@ -27,10 +27,11 @@ const Header = () => {
       )}
     >
       <div className="container mx-auto px-4">
+
         {/* GRID DE 3 COLUNAS */}
-        <div className="grid grid-cols-3 items-center h-20">
-          
-          {/* LOGO */}
+        <div className="flex md:grid md:grid-cols-3 items-center h-20 justify-between">
+
+          {/* COLUNA 1 — LOGO */}
           <div className="flex items-center">
             <button
               onClick={() => scrollToSection("inicio")}
@@ -44,7 +45,7 @@ const Header = () => {
             </button>
           </div>
 
-          {/* MENU DESKTOP */}
+          {/* COLUNA 2 — MENU DESKTOP */}
           <nav className="hidden md:flex items-center gap-8 justify-center">
             <button
               onClick={() => scrollToSection("inicio")}
@@ -78,24 +79,28 @@ const Header = () => {
             </button>
           </nav>
 
-          {/* BOTÃO ÁREA DO CLIENTE */}
-          <div className="hidden md:flex justify-end">
+          {/* COLUNA 3 — ÁREA DO CLIENTE (desktop) + MENU MOBILE (mobile) */}
+          <div className="flex justify-end items-center gap-3">
+
+            {/* BOTÃO ÁREA DO CLIENTE – SOMENTE DESKTOP */}
             <button
               onClick={goToClientArea}
-              className="px-6 py-3 rounded-xl text-[#0c2947] font-bold bg-[#ceb14d] hover:bg-[#b99c3d] transition-all flex items-center gap-2 shadow-md"
+              className="hidden md:flex px-6 py-3 rounded-xl text-[#0c2947] font-bold bg-[#ceb14d] hover:bg-[#b99c3d] transition-all flex items-center gap-2 shadow-md"
             >
               <User className="w-5 h-5" />
               Área do Cliente
             </button>
+
+            {/* MENU MOBILE ICON */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden p-2 text-[#0c2947]"
+            >
+              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+
           </div>
 
-          {/* MENU MOBILE ICON */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-[#0c2947] justify-self-end"
-          >
-            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
         </div>
 
         {/* MENU MOBILE */}

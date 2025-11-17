@@ -8,7 +8,7 @@ import Mission from "@/components/Mission";
 import Slogan from "@/components/Slogan";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-
+import WhatsAppButton from "@/components/WhatsAppButton";
 const Index = () => {
   return (
     <div className="min-h-screen">
@@ -22,6 +22,7 @@ const Index = () => {
       <Slogan />
       <Contact />
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };
