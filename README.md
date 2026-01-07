@@ -32,14 +32,23 @@ O projeto foi desenvolvido utilizando tecnologias modernas de front-end:
 ## 📁 Estrutura do Projeto
 
 abra-assessoria/
+
 ├── public/ # Arquivos públicos
+
 ├── src/
+
 │ ├── components/ # Componentes reutilizáveis
+
 │ ├── pages/ # Páginas do site
+
 │ ├── styles/ # Estilos globais
+
 │ └── main.tsx # Ponto de entrada da aplicação
+
 ├── index.html
+
 ├── package.json
+
 └── README.md
 
 
