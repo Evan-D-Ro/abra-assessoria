@@ -16,7 +16,7 @@ const Header = () => {
   };
 
   const goToClientArea = () => {
-    window.open("https://seusite.com/area-do-cliente", "_blank");
+    window.open("https://wa.me/17991991818", "_blank");
   };
 
   return (
@@ -88,7 +88,7 @@ const Header = () => {
               className="hidden md:flex px-6 py-3 rounded-xl text-[#0c2947] font-bold bg-[#ceb14d] hover:bg-[#b99c3d] transition-all flex items-center gap-2 shadow-md"
             >
               <User className="w-5 h-5" />
-              Área do Cliente
+              Fale conosco
             </button>
 
             {/* MENU MOBILE ICON */}
@@ -149,7 +149,7 @@ const Header = () => {
                 className="mt-4 px-6 py-3 rounded-xl text-[#0c2947] font-bold bg-[#ceb14d] hover:bg-[#b99c3d] transition-all flex items-center justify-center gap-2 shadow-md"
               >
                 <User className="w-5 h-5" />
-                Área do Cliente
+                Fale conosco
               </button>
             </nav>
           </div>

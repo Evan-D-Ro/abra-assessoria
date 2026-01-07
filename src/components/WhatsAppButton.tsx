@@ -4,7 +4,7 @@ import whatsapp from "@/assets/whatsapp.webp";
 
 const WhatsAppButton = () => {
   const handleClick = () => {
-    window.open("https://wa.me/5517996570202?text=Olá! Gostaria de saber mais sobre os serviços da ABRA - Assessoria de Cobrança", "_blank");
+    window.open("https://wa.me/17991991818?text=Olá! Gostaria de saber mais sobre os serviços da ABRA - Assessoria de Cobrança", "_blank");
   };
 
   return (

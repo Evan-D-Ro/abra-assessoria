@@ -7,6 +7,7 @@ import { MessageCircle, Mail, Phone, MapPin, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { FaWhatsapp } from "react-icons/fa";
 import { z } from "zod";
+import InputMask from "react-input-mask";
 
 const contactSchema = z.object({
   name: z.string().trim().min(2, "Nome deve ter pelo menos 2 caracteres").max(100),
@@ -20,45 +21,106 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "",
+    phone: "",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const handleWhatsApp = () => {
-    window.open("https://wa.me/5517996570202", "_blank");
+    window.open("https://wa.me/17991991818", "_blank");
   };
+
+  const validateForm = () => {
+    const newErrors = {
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+    };
+
+    if (!formData.name.trim() || formData.name.trim().length < 3) {
+      newErrors.name = "Informe seu nome completo.";
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      newErrors.email = "Digite um e-mail válido.";
+    }
+
+    const phoneDigits = formData.phone.replace(/\D/g, "");
+    if (phoneDigits.length < 11) {
+      newErrors.phone = "Digite um telefone válido com DDD.";
+    }
+
+    if (formData.message.trim().length < 5) {
+      newErrors.message = "A mensagem deve ter pelo menos 5 caracteres.";
+    }
+
+    setErrors(newErrors);
+    return !Object.values(newErrors).some((e) => e !== "");
+  };
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setErrors({});
+
+    const lastExecution = localStorage.getItem("lastFormSubmit");
+    const now = Date.now();
+
+    // Se o último envio foi há menos de 60 segundos, bloqueia
+    if (lastExecution && now - parseInt(lastExecution) < 60 * 1000) {
+      toast({
+        title: "Aguarde um momento",
+        description: "Você pode enviar novamente após 1 minuto.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!validateForm()) {
+      toast({
+        title: "Formulário inválido",
+        description: "Verifique os campos destacados e tente novamente.",
+        variant: "destructive",
+      });
+      return;
+    }
 
     try {
-      contactSchema.parse(formData);
-      setIsSubmitting(true);
+      const response = await fetch("/enviar.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData as any),
+      });
 
-      // Simulate form submission
-      setTimeout(() => {
+      const result = await response.json();
+
+      if (result.status === "success") {
+        // salva o timestamp do envio
+        localStorage.setItem("lastFormSubmit", now.toString());
+
         toast({
           title: "Mensagem enviada!",
-          description: "Entraremos em contato em breve.",
+          description: "Recebemos seu contato e retornaremos em breve.",
         });
-        setFormData({ name: "", email: "", subject: "", message: "" });
-        setIsSubmitting(false);
-      }, 1000);
-    } catch (error) {
-      if (error instanceof z.ZodError) {
-        const fieldErrors: Record<string, string> = {};
-        error.errors.forEach((err) => {
-          if (err.path[0]) {
-            fieldErrors[err.path[0].toString()] = err.message;
-          }
+        setFormData({ name: "", email: "", phone: "", message: "" });
+      } else {
+        toast({
+          title: "Erro ao enviar mensagem",
+          description: result.message || "Tente novamente mais tarde.",
+          variant: "destructive",
         });
-        setErrors(fieldErrors);
       }
+    } catch (error) {
+      toast({
+        title: "Erro de conexão",
+        description: "Não foi possível enviar o formulário.",
+        variant: "destructive",
+      });
     }
   };
+
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -110,7 +172,7 @@ const Contact = () => {
                     onClick={handleWhatsApp}
                   >
                     <FaWhatsapp className="w-5 h-5 mr-2 text-[#ceb14d] group-hover:scale-110 transition-transform" />
-                    <span className="text-sm md:text-base">WhatsApp: (17) 99657-0202</span>
+                    <span className="text-sm md:text-base">WhatsApp: (17) 99199-1818</span>
                   </Button>
                   <Button
                     size="lg"
@@ -153,7 +215,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="font-semibold text-white mb-1">Telefone</p>
-                      <p className="text-white/80 text-sm">(17) 99657-0202</p>
+                      <p className="text-white/80 text-sm">(17) 99199-1818</p>
                     </div>
                   </div>
                 </div>
@@ -198,15 +260,29 @@ const Contact = () => {
                   {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
                 </div>
 
-                <div>
-                  <Input
-                    name="subject"
-                    placeholder="Assunto"
-                    value={formData.subject}
+                <div className="space-y-2">
+                  <InputMask
+                    mask="(99) 99999-9999"
+                    value={formData.phone}
                     onChange={handleChange}
-                    className="bg-[#f6efe8] border-[#ceb14d]/30 focus:border-[#ceb14d] text-[#0c2947] placeholder:text-[#0c2947]/50 h-12"
-                  />
+                  >
+                    {(inputProps: any) => (
+                      <Input
+                        {...inputProps}
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        className={`bg-[#f6efe8] border-[#ceb14d]/30 focus:border-[#ceb14d] text-[#0c2947] placeholder:text-[#0c2947]/50 h-12 ${errors.email ? "border-red-500" : ""
+                          }`}
+                        placeholder="Telefone *"
+                      />
+                    )}
+                  </InputMask>
+                  {errors.phone && (
+                    <p className="text-red-400 text-sm">{errors.phone}</p>
+                  )}
                 </div>
+
 
                 <div>
                   <Textarea

@@ -1,73 +1,71 @@
-# Welcome to your Lovable project
+# ABRA Cobranças – Site Institucional
 
-## Project info
+Este repositório contém o código-fonte do site institucional da **ABRA Cobranças**, desenvolvido para apresentar a empresa, seus serviços e facilitar o contato com clientes.
 
-**URL**: https://lovable.dev/projects/da897ce5-08aa-48cb-9cfb-0025aafe4cb8
+🌐 Site oficial: **https://abracobrancas.com.br**
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## 🧾 Sobre a ABRA Cobranças
 
-**Use Lovable**
+A **ABRA Cobranças** é especializada em soluções profissionais de cobrança, oferecendo atendimento humanizado, estratégias eficazes de recuperação de crédito e conformidade com as boas práticas do mercado.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/da897ce5-08aa-48cb-9cfb-0025aafe4cb8) and start prompting.
+O site tem como objetivo:
+- Apresentar a empresa e seus diferenciais  
+- Divulgar serviços de cobrança  
+- Facilitar o contato com clientes e parceiros  
 
-Changes made via Lovable will be committed automatically to this repo.
+---
 
-**Use your preferred IDE**
+## 🚀 Tecnologias Utilizadas
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+O projeto foi desenvolvido utilizando tecnologias modernas de front-end:
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- **Vite** – Build e ambiente de desenvolvimento rápido
+- **React** – Biblioteca para construção da interface
+- **TypeScript** – Tipagem estática para maior segurança e organização
+- **Tailwind CSS** – Estilização utilitária e responsiva
+- **shadcn/ui** – Componentes de interface modernos e acessíveis
 
-Follow these steps:
+---
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## 📁 Estrutura do Projeto
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+abra-assessoria/
+├── public/ # Arquivos públicos
+├── src/
+│ ├── components/ # Componentes reutilizáveis
+│ ├── pages/ # Páginas do site
+│ ├── styles/ # Estilos globais
+│ └── main.tsx # Ponto de entrada da aplicação
+├── index.html
+├── package.json
+└── README.md
 
-# Step 3: Install the necessary dependencies.
-npm i
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+---
+
+## 🛠️ Como Rodar o Projeto Localmente
+
+### Pré-requisitos
+- **Node.js** (versão recomendada: 18+)
+- **npm** ou **yarn**
+
+### Passo a passo
+
+```bash
+# 1. Clone o repositório
+git clone https://github.com/Evan-D-Ro/abra-assessoria.git
+
+# 2. Acesse a pasta do projeto
+cd abra-assessoria
+
+# 3. Instale as dependências
+npm install
+
+# 4. Inicie o servidor de desenvolvimento
 npm run dev
-```
 
-**Edit a file directly in GitHub**
+Após isso, o projeto estará disponível em:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/da897ce5-08aa-48cb-9cfb-0025aafe4cb8) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+http://localhost:5173

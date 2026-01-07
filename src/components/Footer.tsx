@@ -4,7 +4,7 @@ import logo2 from "@/assets/logo3.png";
 const Footer = () => {
   return (
     <footer
-      className="pt-16 pb-8"
+      className="pt-12 pb-8"
       style={{ backgroundColor: "#0c2947", color: "#f6efe8" }}
     >
       <div className="container mx-auto px-6">
@@ -46,7 +46,7 @@ const Footer = () => {
           </div>
 
           {/* Social */}
-          <div className="flex justify-center gap-6 mb-12">
+          {/* <div className="flex justify-center gap-6 mb-12">
             {[
               { href: "https://facebook.com", icon: <Facebook className="w-5 h-5 text-[#f6efe8]" /> },
               { href: "https://instagram.com", icon: <Instagram className="w-5 h-5 text-[#f6efe8]" /> },
@@ -62,7 +62,7 @@ const Footer = () => {
                 {icon}
               </a>
             ))}
-          </div>
+          </div> */}
 
           {/* Copyright */}
           <div className="text-center text-sm text-[#f6efe8]/60 border-t border-[#f6efe8]/20 pt-8 w-full">

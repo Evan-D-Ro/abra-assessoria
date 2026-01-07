@@ -8,7 +8,7 @@ import TypewriterText from "@/components/TypewriterText";
 
 const Hero = () => {
   const handleWhatsApp = () => {
-    window.open("https://wa.me/5517996570202", "_blank");
+    window.open("https://wa.me/17991991818", "_blank");
   };
 
   const scrollToContact = () => {
